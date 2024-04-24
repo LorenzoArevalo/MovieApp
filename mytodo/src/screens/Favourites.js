@@ -9,8 +9,8 @@ import { setFavourites } from '../redux/favouritesSlice'
 function Favourites() {
 
     const navigation = useNavigation();
-    const favourites = useSelector((state) => state.favourites);
-
+    const favourites = useSelector((state) => state.favourites.movies);
+    const dispatch = useDispatch();
 
     const removeFavouriteMovies = (movie) => {
         const newFavouriteList = favourites.filter(
@@ -21,16 +21,35 @@ function Favourites() {
 
     return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <ScrollView style={{ padding: 10 }} 
-                showsHorizontalScrollIndicator={false}
-                keyboardShouldPersistTaps= {'always'}>
-            <View style={styles.container}>
-                <MovieList 
-                movies = {favourites.movies} 
-                handleFavouritesClick={removeFavouriteMovies} 
-                favoriteComponent = {RemoveFavourites}/>
-            </View>
-        </ScrollView>
+        {
+          favourites.length == 0 
+                    ? (
+                        <View style={{
+                        alignContent:'center', 
+                        justifyContent: 'center', 
+                        width:'100%',
+                        height:500,
+                        }}>
+                            <Text style={{
+                              textAlign:'center'
+                            }}>¡Agregar peliculas a favoritos para verla aquí! ❤️</Text>
+                        </View>
+                    )
+                    : (
+                        <ScrollView style={{ padding: 10, width:'100%'}} 
+                                showsHorizontalScrollIndicator={false}
+                                keyboardShouldPersistTaps= {'always'}>
+                            <View style={styles.container}>
+                                <MovieList 
+                                modalMessage={'¿Quieres eliminar esta pelicula a favoritos? 💔'}
+                                movies = {favourites} 
+                                handleFavouritesClick={removeFavouriteMovies} 
+                                favoriteComponent = {RemoveFavourites}/>
+                            </View>
+                        </ScrollView>
+                    )
+        }
+        
     </View>
     )
 }

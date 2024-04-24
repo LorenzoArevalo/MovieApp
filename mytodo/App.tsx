@@ -24,8 +24,29 @@ export default function App(){
   const [favourites, setFavourites] = useState([]);
 
   const FavouriteStack = createNativeStackNavigator({
+    initialRouteName: 'Favoritos',
+    screenOptions: {
+      headerStyle: { backgroundColor: 'white'},
+      headerTitleStyle: { color: 'tomato' },
+    },
     screens: {
-      Favoritos: Favourites,
+      'Tus Favoritos':{
+        screen: Favourites,
+        options: {
+          headerRight: () => (
+            <View style={{ flexDirection:'row', alignItems: 'center', justifyContent: 'center' }}>
+              <Text style={{ padding: 10}}>Lorenzo Arévalo</Text>
+                <Avatar
+                  size={32}
+                  rounded
+                  source={{ uri: "https://randomuser.me/api/portraits/men/36.jpg", }}
+                />
+            </View>
+              
+          ),
+        }
+      },
+      Detalles: Details,
     },
   });
   
@@ -35,12 +56,12 @@ export default function App(){
       headerStyle: { backgroundColor: 'tomato' },
     },
     screens: {
-      Home: {
+      Inicio: {
         screen: Home,
         options: {
           headerRight: () => (
             <View style={{ flexDirection:'row', alignItems: 'center', justifyContent: 'center' }}>
-              <Text style={{ padding: 10}}>User</Text>
+              <Text style={{ padding: 10}}>Lorenzo Arévalo</Text>
               <Avatar
                 size={32}
                 rounded
@@ -57,13 +78,13 @@ export default function App(){
   
   const MyTabs = createBottomTabNavigator({
     screens:{
-      Inicio: {
+      Home: {
         screen: HomeStack,
         options: {
           headerShown: false,
         },
       },
-      Favoritos: {
+      Favourites: {
         screen: FavouriteStack,
         options: {
           headerShown: false,
@@ -75,14 +96,14 @@ export default function App(){
         let iconName;
         let color;
 
-        if (route.name === 'Inicio') {
+        if (route.name === 'Home') {
           iconName = focused
             ? 'home-variant'
             : 'home-variant-outline';
             color = focused
             ? 'black'
             : 'grey';
-        } else if (route.name === 'Favoritos') {
+        } else if (route.name === 'Favourites') {
           iconName = focused
           ? 'cards-heart' 
           : 'cards-heart-outline';

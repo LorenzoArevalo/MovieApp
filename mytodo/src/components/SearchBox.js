@@ -13,7 +13,8 @@ const SearchBox = (props) => {
 
       this.textInput.clear()
       props.setSearchValue('')
-
+      props.setPagSeleccionada(1)
+      props.setMovies([])
       this.textInput.blur(); 
     };
 

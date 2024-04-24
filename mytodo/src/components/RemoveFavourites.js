@@ -10,10 +10,8 @@ import { Icon } from '@rneui/themed';
 const RemoveFavourites = (props) => {
     return (
         <View style={styles.button}>
-            
-            <Text style={styles.buttonText}>Añadir a favoritos</Text>
-            
-            <Icon name='cards-heart' size={25} color='red' type='material-community'/>
+            <Text style={styles.buttonText}>Eliminar de favoritos</Text>
+            <Icon name='heart-off-outline' size={25} color='grey' type='material-community'/>
         </View>
     );
 };
