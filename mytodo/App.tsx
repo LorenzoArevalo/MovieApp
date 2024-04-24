@@ -128,27 +128,7 @@ export default function App(){
   return (
   <Provider store= {store}>
     <SafeAreaView style={styles.container}>
-
     <Navigation/>
-      {/* <View style={styles.search}>
-        <MovieListHeading heading='Movies'/>
-        <SearchBox searchValue={searchValue} setSearchValue={setSearchValue}/>
-      </View>
-      <ScrollView horizontal={true}>
-        <MovieList 
-        movies = {movies} 
-        handleFavouritesClick={addFavouriteMovies} 
-        favoriteComponent = {AddFavorites}/>
-      </ScrollView>
-      <View style={styles.search}>
-        <MovieListHeading heading='Favoritas'/>
-      </View>
-      <ScrollView horizontal={true}>
-        <MovieList 
-        movies = {favourites} 
-        handleFavouritesClick={removeFavouriteMovies} 
-        favoriteComponent = {RemoveFavourites}/>
-      </ScrollView> */}
     </SafeAreaView >
   </Provider>
   

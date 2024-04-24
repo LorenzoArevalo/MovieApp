@@ -10,9 +10,7 @@ import { Icon } from '@rneui/themed';
 const AddFavorites = (props) => {
     return (
         <View style={styles.button}>
-            
             <Text style={styles.buttonText}>Añadir a favoritos</Text>
-            
             <Icon name='cards-heart' size={25} color='red' type='material-community'/>
         </View>
     );

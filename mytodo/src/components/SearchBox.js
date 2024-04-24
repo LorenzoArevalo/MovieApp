@@ -19,7 +19,7 @@ const SearchBox = (props) => {
     };
 
     return (
-      <View style={{ flexDirection: 'row', alignItems:'center'}}>
+      <View style={styles.container}>
         <TextInput
           ref={input => { this.textInput = input }}
           style={styles.input}
@@ -37,6 +37,10 @@ const SearchBox = (props) => {
 
 
 const styles = StyleSheet.create({
+    container: { 
+      flexDirection: 'row',
+      alignItems:'center'
+    },
     input: {
       height: 40,
       margin: 12,

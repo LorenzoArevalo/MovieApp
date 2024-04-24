@@ -20,22 +20,40 @@ const MovieList = (props) => {
         return (
             <>
                 {props.movies.map((movie, index)=> (
-                    <View style={{
-                        width: '50%',
-                        paddingHorizontal: 4,
-                        }}>
+                    <View style={styles.movieContainer}>
                         <TouchableOpacity 
                         key={'touchableOpacity', index} 
                         onPress={() => navigation.navigate('Detalles', {
                         movieId: movie.imdbID
                         })} >
                             <View key={index} style={styles.container}>
-                                <Image
+                            {
+                                movie.Poster == 'N/A' ? (
+                                    <View
+                                    style={styles.logo}
+                                    >
+                                        <View style={{
+                                                height:'100%',
+                                                width:'100%',
+                                                alignItems:'center',
+                                                justifyContent:'center'
+                                            }}>
+                                            <Text >
+                                                Imagen no encontrada 
+                                            </Text>
+                                        </View>
+                                    </View>
+                                ): (
+                                    <Image
                                     style={styles.logo} resizeMode={'cover'}
                                     source={{
                                         uri:movie.Poster,
                                     }}
                                 />
+                                )
+                            }
+                            
+                                
                                 <TouchableOpacity activeOpacity={0.6} key={movie.id} onPress={() => openModalWithData(movie)} style={styles.favoriteButton}> 
                                     <FavouriteComponent />
                                 </TouchableOpacity>
@@ -61,37 +79,11 @@ const MovieList = (props) => {
                             </View>
                         </TouchableOpacity>
                         
-                        <View style={{ 
-                            flex: 1, 
-                            alignItems:'center', 
-                            justifyContent:'start', 
-                            paddingVertical: 10,
-                            }}>
-                            <Text style={{
-                                fontWeight: 'bold', 
-                                textAlign:'center'
-                                }}>{movie.Title}</Text>
-
-                            <View style={{ 
-                                flexDirection:'row',
-                                paddingVertical: 5
-                            }}>
-                                <View style={{
-                                    backgroundColor:'yellow',
-                                    height: 30,
-                                    borderRadius: 25,
-                                    alignItems:'center',
-                                    justifyContent:'center',
-                                    borderWidth: 1,
-                                    borderColor: 'grey',
-                                }}>
-                                    <Text style={{
-                                        paddingHorizontal: 10,
-                                        paddingVertical:2,
-                                        alignItems:'center',
-                                        justifyContent:'center',
-                                        fontWeight: 'bold'
-                                    }}>
+                        <View style={styles.movieInfoContainer}>
+                            <Text style={styles.movieTitle}>{movie.Title}</Text>
+                            <View style={styles.cardsContainer}>
+                                <View style={styles.yearCardContainer}>
+                                    <Text style={styles.cardText}>
                                         {movie.Year}
                                     </Text>
                                 </View>
@@ -112,11 +104,7 @@ const MovieList = (props) => {
                                     borderWidth: 1,
                                     borderColor: 'grey',
                                 }}>
-                                    <Text style={{
-                                        paddingHorizontal: 10,
-                                        paddingVertical:2,
-                                        fontWeight: 'bold'
-                                    }}>
+                                    <Text style={styles.cardText}>
                                         {movie.Type}
                                     </Text>
                                 </View>
@@ -137,7 +125,10 @@ const styles = StyleSheet.create({
     logo: {
         width: 200,
         height: 300,
-        
+    },
+    movieContainer: {
+        width: '50%',
+        paddingHorizontal: 4,
     },
     container: {
         borderRadius: 20,
@@ -146,6 +137,36 @@ const styles = StyleSheet.create({
         alignItems: 'center', 
         borderWidth: 1,
         borderColor: 'grey',
+    },
+    movieInfoContainer: { 
+        flex: 1, 
+        alignItems:'center', 
+        justifyContent:'start', 
+        paddingVertical: 10,
+    },
+    cardsContainer: { 
+        flexDirection:'row',
+        paddingVertical: 5,
+    },
+    yearCardContainer: {
+        backgroundColor:'yellow',
+        height: 30,
+        borderRadius: 25,
+        alignItems:'center',
+        justifyContent:'center',
+        borderWidth: 1,
+        borderColor: 'grey',
+    },
+    cardText: {
+        paddingHorizontal: 10,
+        paddingVertical:2,
+        alignItems:'center',
+        justifyContent:'center',
+        fontWeight: 'bold'
+    },
+    movieTitle: {
+        fontWeight: 'bold', 
+        textAlign:'center'
     },
     favoriteButton: {
         position: 'absolute',
@@ -167,7 +188,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.1)', // Fondo oscuro para el modal
+    backgroundColor: 'rgba(0, 0, 0, 0.1)', 
     },
     modalView: {
     backgroundColor: 'white',

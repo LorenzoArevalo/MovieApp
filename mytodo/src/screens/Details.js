@@ -6,7 +6,7 @@ function Details({ route }) {
 
     const { movieId } = route.params;
 
-    const url = `http://www.omdbapi.com/?i=${movieId}&apikey=70931d4d`;
+    const url = `https://www.omdbapi.com/?i=${movieId}&apikey=70931d4d`;
     
     
         const [data, setData] = useState(null);

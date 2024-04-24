@@ -19,7 +19,7 @@ function Home() {
     const resultadosPorPagina = 10;
     
     const getMoviesRequest = (searchValue, pagSeleccionada) => {
-      const url = `http://www.omdbapi.com/?s=${searchValue}&apikey=70931d4d&page=${pagSeleccionada}`;
+      const url = `https://www.omdbapi.com/?s=${searchValue}&apikey=70931d4d&page=${pagSeleccionada}`;
     
       fetch(url)
         .then((response) => response.json())
