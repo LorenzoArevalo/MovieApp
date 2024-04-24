@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {View, Image, StyleSheet, TouchableOpacity, Text, Modal} from 'react-native'
 import { useNavigation } from '@react-navigation/native'
+import  colors  from '../styles/colors'
 
 
 const MovieList = (props) => {
@@ -38,7 +39,9 @@ const MovieList = (props) => {
                                                 alignItems:'center',
                                                 justifyContent:'center'
                                             }}>
-                                            <Text >
+                                            <Text style={{
+                                                color: colors.lightGreen
+                                            }}>
                                                 Imagen no encontrada 
                                             </Text>
                                         </View>
@@ -102,7 +105,7 @@ const MovieList = (props) => {
                                     alignItems:'center',
                                     justifyContent:'center',
                                     borderWidth: 1,
-                                    borderColor: 'grey',
+                                    borderColor: 'white',
                                 }}>
                                     <Text style={styles.cardText}>
                                         {movie.Type}
@@ -125,6 +128,7 @@ const styles = StyleSheet.create({
     logo: {
         width: 200,
         height: 300,
+        backgroundColor:colors.green
     },
     movieContainer: {
         width: '50%',
@@ -136,7 +140,7 @@ const styles = StyleSheet.create({
         position: 'relative',
         alignItems: 'center', 
         borderWidth: 1,
-        borderColor: 'grey',
+        borderColor: colors.green,
     },
     movieInfoContainer: { 
         flex: 1, 
@@ -155,7 +159,7 @@ const styles = StyleSheet.create({
         alignItems:'center',
         justifyContent:'center',
         borderWidth: 1,
-        borderColor: 'grey',
+        borderColor: 'white',
     },
     cardText: {
         paddingHorizontal: 10,
@@ -166,7 +170,8 @@ const styles = StyleSheet.create({
     },
     movieTitle: {
         fontWeight: 'bold', 
-        textAlign:'center'
+        textAlign:'center',
+        color: colors.lightGreen
     },
     favoriteButton: {
         position: 'absolute',
@@ -191,7 +196,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0, 0, 0, 0.1)', 
     },
     modalView: {
-    backgroundColor: 'white',
+    backgroundColor: colors.lightGreen,
     padding: 20,
     borderRadius: 10,
     elevation: 5,
@@ -205,6 +210,7 @@ const styles = StyleSheet.create({
     color: 'blue',
     textAlign: 'center',
     marginTop: 10,
+    color:colors.green
     },
   });
 

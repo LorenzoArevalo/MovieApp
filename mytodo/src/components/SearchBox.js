@@ -7,6 +7,7 @@ StyleSheet,
 TouchableOpacity
 } from 'react-native';
 import { Icon } from '@rneui/themed';
+import  colors  from '../styles/colors'
 
 const SearchBox = (props) => {
     const clearTextInput = () => {
@@ -25,10 +26,11 @@ const SearchBox = (props) => {
           style={styles.input}
           onChangeText={(text) => props.setSearchValue(text)}
           defaultValue={props.value}
+          placeholderTextColor="grey"
           placeholder="Encuentra tu pelicula favorita..."
         />
         <TouchableOpacity activeOpacity={0.6} onPress={clearTextInput}> 
-          <Icon name='backspace' size={25} color='grey' type='material-community'  />
+          <Icon name='backspace' size={25} color={colors.lightGreen}  type='material-community'  />
         </TouchableOpacity>
         
       </View>
@@ -46,6 +48,8 @@ const styles = StyleSheet.create({
       margin: 12,
       borderWidth: 1,
       padding: 10,
+      borderColor: colors.lightGreen,
+      color: colors.lightGreen,
     },
   });
 

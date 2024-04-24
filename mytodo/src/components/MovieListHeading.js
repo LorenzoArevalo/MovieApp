@@ -4,6 +4,7 @@ View,
 Text,
 StyleSheet
 } from 'react-native';
+import  colors  from '../styles/colors'
 
 const MovieListHeading = (props) => {
     return (
@@ -15,6 +16,7 @@ const MovieListHeading = (props) => {
 
 const styles = StyleSheet.create({
     titleText: {
+      color: colors.lightGreen,
       fontSize: 20,
       fontWeight: 'bold',
     },

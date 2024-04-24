@@ -1,6 +1,7 @@
 import React , {useState, useEffect} from 'react'
 import { View, Text, Image } from 'react-native'
 import { AirbnbRating } from '@rneui/themed';
+import  colors  from '../styles/colors'
 
 function Details({ route }) {
 
@@ -45,15 +46,43 @@ function Details({ route }) {
                                 flexDirection: 'row',
                                 alignItems:'center',
                             }}>
-                                <Image style={{
-                                    width: '48%',
-                                    height: 300,
-                                    resizeMode: 'cover'
-                                }}
+                                {
+                                data.Poster == 'N/A' ? (
+                                    <View
+                                    style={{
+                                        height:300,
+                                        width:200,
+                                        alignItems:'center',
+                                        justifyContent:'center',
+                                        borderRadius: 5,
+                                        borderColor: colors.green,
+                                        borderWidth:2
+                                    }}
+                                    >
+                                        <View style={{
+                                                alignItems:'center',
+                                                justifyContent:'center',
+                                            }}>
+                                            <Text style={{
+                                                color: colors.green
+                                            }}>
+                                                Imagen no encontrada 
+                                            </Text>
+                                        </View>
+                                    </View>
+                                ): (
+                                    <Image
+                                    style={{
+                                        width: 200,
+                                        height: 300,
+                                        backgroundColor:colors.green
+                                    }} resizeMode={'cover'}
                                     source={{
                                         uri:data.Poster,
                                     }}
                                 />
+                                )
+                            }
                                 <View style={{ 
                                     width: '44%',
                                     paddingHorizontal:2
@@ -275,5 +304,7 @@ function Details({ route }) {
         );
 
 }
+
+
 
 export default Details

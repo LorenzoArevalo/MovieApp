@@ -18,6 +18,7 @@ import Details from './src/screens/Details'
 import Favourites from './src/screens/Favourites'
 import { Provider } from 'react-redux'
 import { store } from './src/redux/store'
+import  colors  from './src/styles/colors'
 
 export default function App(){
 
@@ -26,8 +27,8 @@ export default function App(){
   const FavouriteStack = createNativeStackNavigator({
     initialRouteName: 'Favoritos',
     screenOptions: {
-      headerStyle: { backgroundColor: 'white'},
-      headerTitleStyle: { color: 'tomato' },
+      headerStyle: { backgroundColor: colors.primary},
+      headerTitleStyle: { color: colors.lightGreen },
     },
     screens: {
       'Tus Favoritos':{
@@ -53,7 +54,8 @@ export default function App(){
   const HomeStack = createNativeStackNavigator({
     initialRouteName: 'Home',
     screenOptions: {
-      headerStyle: { backgroundColor: 'tomato' },
+      headerStyle: { backgroundColor: colors.primary},
+      headerTitleStyle: { color: colors.lightGreen },
     },
     screens: {
       Inicio: {
@@ -61,7 +63,10 @@ export default function App(){
         options: {
           headerRight: () => (
             <View style={{ flexDirection:'row', alignItems: 'center', justifyContent: 'center' }}>
-              <Text style={{ padding: 10}}>Lorenzo Arévalo</Text>
+              <Text style={{ 
+                padding: 10,
+                color: colors.lightGreen
+                }}>Lorenzo Arévalo</Text>
               <Avatar
                 size={32}
                 rounded

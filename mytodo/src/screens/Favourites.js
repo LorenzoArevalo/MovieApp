@@ -5,6 +5,7 @@ import RemoveFavourites from '../components/RemoveFavourites'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigation } from '@react-navigation/native';
 import { setFavourites } from '../redux/favouritesSlice'
+import  colors  from '../styles/colors'
 
 function Favourites() {
 
@@ -20,7 +21,7 @@ function Favourites() {
       }
 
     return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.accent }}>
         {
           favourites.length == 0 
                     ? (
@@ -31,7 +32,8 @@ function Favourites() {
                         height:500,
                         }}>
                             <Text style={{
-                              textAlign:'center'
+                              textAlign:'center',
+                              color:colors.lightGreen
                             }}>¡Agregar peliculas a favoritos para verla aquí! ❤️</Text>
                         </View>
                     )

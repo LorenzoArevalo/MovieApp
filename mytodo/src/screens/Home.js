@@ -7,6 +7,7 @@ import MovieList from '../components/MovieList';
 import AddFavorites from '../components/AddFavorites'
 import { useSelector, useDispatch } from 'react-redux'
 import { setFavourites } from '../redux/favouritesSlice'
+import  colors  from '../styles/colors'
 
 function Home() {
 
@@ -66,7 +67,7 @@ function Home() {
 
   
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'start' , padding:10 }}>
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'start' , padding:10, backgroundColor: colors.accent }}>
       <MovieListHeading heading='Buscar' />
       <SearchBox 
         searchValue={searchValue} 
@@ -93,7 +94,7 @@ function Home() {
                   : setPagSeleccionada(pagSeleccionada)}>
                   <Icon style={{ paddingHorizontal: 5 }} 
                   name='arrow-left-thin' size={20} 
-                  color='black' 
+                  color= {colors.lightGreen}
                   type='material-community'/>
                 </TouchableOpacity>
                 
@@ -103,7 +104,7 @@ function Home() {
                           horizontal>
                   {
                     paginas.map((pagina, index) => {
-                      const color = pagina === pagSeleccionada ? 'tomato': 'grey'
+                      const color = pagina === pagSeleccionada ? colors.green: colors.lightGreen
                       if (index < 1) {
                         return (
                           <TouchableOpacity key={'touchableOpacity',index} onPress={()=> setPagSeleccionada(index + 1)}>
@@ -142,7 +143,8 @@ function Home() {
                   : setPagSeleccionada(pagSeleccionada)}>
                   <Icon style={{ paddingHorizontal: 5 }} 
                   name='arrow-right-thin' 
-                  size={20} color='black' 
+                  size={20} 
+                  color={colors.lightGreen}
                   type='material-community'/>
                 </TouchableOpacity>
                 
@@ -165,7 +167,8 @@ function Home() {
                         height:500,
                         }}>
                             <Text style={{
-                              textAlign:'center'
+                              textAlign:'center',
+                              color: colors.lightGreen
                             }}>¡Busca tu pelicula o serie favorita! ☝️😎</Text>
                         </View>
                     )
